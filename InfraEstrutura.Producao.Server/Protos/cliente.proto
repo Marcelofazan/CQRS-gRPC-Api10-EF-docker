@@ -1,0 +1,45 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "InfraEstrutura.Producao.Server";
+
+
+// Definition of messages for the Launch Control Service
+message LaunchRequest {
+    string id = 1;
+    string name = 2;
+    string typeofperson = 3;
+    string personalnumber = 4;
+    string address = 5;
+    double value = 6;
+    string registrationdate = 7;
+}
+
+message LaunchResponse {
+  string id = 1; // ID of the created or updated launch
+  bool success = 2; // Indicates whether the launch was successful
+  string message = 3; // Error or success message
+}
+
+message LaunchIdRequest {
+  string id = 1; // ID of the launch to be deleted or queried
+}
+
+message DeleteLaunchResponse {
+  bool success = 1; // Indicates whether the launch was successfully deleted
+  string message = 2; // Error or success message
+}
+
+// Service for launch control (Commands)
+service LaunchRegisterService {
+  // Register a new launch (debit or credit)
+  rpc RegisterLaunch (LaunchRequest) returns (LaunchResponse);
+
+  // Update an existing launch
+  rpc UpdateLaunch (LaunchRequest) returns (LaunchResponse);
+
+  // Delete a launch by ID
+  rpc DeleteLaunch (LaunchIdRequest) returns (DeleteLaunchResponse);
+}
+

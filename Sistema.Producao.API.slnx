@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Producao/">
+    <Project Path="InfraEstrutura.Producao.DataModels/InfraEstrutura.Producao.DataModels.csproj" Id="204a7ada-e724-4ded-9a7c-c12d624ccb7a" />
+    <Project Path="InfraEstrutura.Producao.Server/InfraEstrutura.Producao.Server.csproj" Id="5662c9ea-d9fe-42a3-a795-db8ec1cae1ef" />
+    <Project Path="Sistema.Producao.API/Sistema.Producao.API.csproj" />
+    <Project Path="Sistema.Producao.Business/InfraEstrutura.Producao.Business.csproj" Id="a2cbd238-4e15-49d9-9a1e-31aa83b85531" />
+  </Folder>
+  <Folder Name="/src/Sdk/">
+    <Project Path="Sistema.Producao.Sdk/Sistema.Producao.Sdk.csproj" Id="29dac9da-18a4-479a-922e-a80bcdb79fa5" />
+  </Folder>
+  <Folder Name="/src/Testes/">
+    <Project Path="Sistema.Producao.Testes/Sistema.Producao.Testes.csproj" Id="dfbbd9c7-9726-4e8d-ae91-326299457ed6" />
+  </Folder>
+</Solution>
