@@ -51,11 +51,11 @@ docker compose down
 |-----------|-----------|
 | **API** | https://localhost:7285/swagger/index.html  |
 | **gRPC** | https://localhost:7026/ |
-| **RabbitMQ** | http://localhost:15672 Login: guest Senha: guest |
+| **RabbitMQ** | http://localhost:15672 |
 ---
+RabbitMQ por padrão possui para acesso Login: **guest** **Senha: **guest** 
 
-
-#### Executar Endpoints
+#### 🧪 Executar Endpoints
 
 Registrar Cliente
 https://localhost:7274/api/Cliente/create
