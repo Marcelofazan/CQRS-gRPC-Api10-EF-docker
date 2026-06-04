@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Dgr8s99#
-      POSTGRES_DB: lancamentos
+      POSTGRES_DB: ProducaoDB
     ports:
       - "5432:5432"
     volumes:
