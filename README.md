@@ -9,7 +9,7 @@ Exemplo de criação de API no padrão de Arquitetura CQRS, desenvolvida em .NET
 | **CQRS** | É um padrão arquitetural que separa as operações de escrita (comandos) das operações de leitura (consultas) |
 | **Mediatr** | Desacoplar classes, permitindo que diferentes componentes de um sistema se comuniquem através de um ponto central (o mediador) |
 
-#### 🔄 Executar a aplicação
+## 🔄 Executar a aplicação [PRODUÇÃO]
 
 VSCode Terminal [1]
 ```bash
@@ -104,3 +104,71 @@ dotnet test Sistema.Producao.Testes/Sistema.Producao.Testes.csproj
 #### ⚙️ Postgres (pgAdmin)
 Conexão com o Banco de dados 
 - Com o Servidor do **Postgres** parado em Serviços, crie uma conexão Docker Postgres para 127.0.0.1 e informe o Usuário e Senha 
+
+## 🔄 Executar a aplicação [REPORTER]
+
+VSCode Terminal [1]
+```bash
+docker-compose up --build  
+```
+
+- Caso houver falhas na criação do Conteiner na porta do RabbitMQ execute no PowerShell executar . 
+```bash 
+netstat -ano | findstr 5672
+```
+O comando vai mostrar um número no final da linha (o PID). Elimine o processo usando:
+```bash 
+taskkill /PID <NUMERO_DO_PID> /F
+```
+
+VSCode Terminal [2]
+```bash 
+dotnet build
+
+dotnet add Sistema.Reporter.Server package Microsoft.EntityFrameworkCore.Design
+
+dotnet ef migrations add InitialCreate --project InfraEstrutura.Reporter.DataModels --startup-project Sistema.Reporter.Server
+
+dotnet ef database update --project InfraEstrutura.Reporter.DataModels --startup-project Sistema.Reporter.Server
+
+cd Sistema.Reporter.Server
+
+dotnet run 
+```
+
+VSCode Terminal [3]
+```bash 
+cd Sistema.Reporter.API
+
+dotnet run --launch-profile https
+```
+
+- Para fechar o Container após execução
+```bash 
+docker compose down         
+```
+
+| Host | URL |
+|-----------|-----------|
+| **API** | https://localhost:7080/swagger/index.html |
+| **gRPC** | https://localhost:7237/ |
+| **RabbitMQ** | http://localhost:15672 |
+
+Exemplo chamada Relatório de consolidação, ele será gravado no banco de dados MongoDB
+```bash 
+https://localhost:7080/api/Consolidacao/consolidacao?data=2026-06-04
+```
+
+#### Executar Testes Unitários
+```bash
+dotnet test Sistema.Reporter.Testes/Sistema.Reporter.Testes.csproj
+```
+
+#### ⚙️ MongoDB (Compass)
+Conexão com o Banco de dados 
+- No o Servidor do **Postgres** parado em Serviços, crie uma conexão em porta diferente **mongodb://127.0.0.1:27018/** .
+
+
+## 🔄 Executar a aplicação [FRONTEND]
+
+
