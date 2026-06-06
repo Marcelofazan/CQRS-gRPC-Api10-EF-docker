@@ -9,7 +9,7 @@ Exemplo de criação de API Microserviços com Comunicação gRPC, Mensageria Ra
 | **Mediatr** | Desacoplar classes, permitindo que diferentes componentes de um sistema se comuniquem através de um ponto central (o mediador) |
 | **RabbitMQ** | Agente de mensagens (message broker) ele atua como um carteiro altamente inteligente e seguro  |
 
-## 📁 PRODUÇÃO 
+## 📁 Produção
 #### 🔄 Executar a aplicação
 
 VSCode Terminal [1]
@@ -106,7 +106,7 @@ dotnet test Sistema.Producao.Testes/Sistema.Producao.Testes.csproj
 Conexão com o Banco de dados 
 - Com o Servidor do **Postgres** parado em Serviços, crie uma conexão Docker Postgres para 127.0.0.1 e informe o Usuário e Senha 
 
-## 📁 REPORTER 
+## 📁 Reporter
 #### 🔄 Executar a aplicação
 
 VSCode Terminal [1]
@@ -172,7 +172,7 @@ dotnet test Sistema.Reporter.Testes/Sistema.Reporter.Testes.csproj
 Conexão com o Banco de dados 
 - No o Servidor do **Postgres** parado em Serviços, crie uma conexão em porta diferente **mongodb://127.0.0.1:27018/** .
 
-## 🌍 FRONTEND 
+## 🌍 Frontend
 #### 🔄 Executar a aplicação 
 
 - Recuperar as dependencias do projeto node_modules .
