@@ -17,12 +17,13 @@ Exemplo de projeto com Arquitetura CQRS com comunicação gRPC e MediatR, mensag
 #### 🔄 Executar a aplicação
 
 VSCode Terminal [1]
+- Iniciar Docker 
 ```bash
 docker-compose up --build  
 ```
 VSCode Terminal [2]
+- Iniciar Servidor 
 ```bash
-
 cd Producao 
 dotnet ef migrations add InitialCreate --project InfraEstrutura.Producao.DataModels --startup-project Sistema.Producao.API
 dotnet ef database update --project InfraEstrutura.Producao.DataModels --startup-project Sistema.Producao.API
@@ -30,21 +31,10 @@ cd InfraEstrutura.Producao.Server
 dotnet run 
 ```
 VSCode Terminal [3]
+- Iniciar API 
 ```bash
 cd Sistema.Producao.API
-
 dotnet run --launch-profile https
-```
-
-- Caso for necessário renovar o certificado SSL 
-```bash 
-dotnet dev-certs https --clean
-dotnet dev-certs https --trust
-```
-
-- Caso precisar deletar a Database do Container 
-```bash 
-dotnet ef database drop --project InfraEstrutura.Producao.Server --startup-project InfraEstrutura.Producao.Server --force
 ```
 
 - Para fechar o Container após execução
@@ -57,6 +47,7 @@ URL(s) usadas:
 | **API** | https://localhost:7274/swagger/index.html |
 | **gRPC** | https://localhost:7026/ |
 | **RabbitMQ** | http://localhost:15672 |
+| **Server** | http://localhost:5184 |
 
 RabbitMQ por padrão possui para acesso Login: **guest** **Senha: **guest** 
 
@@ -104,6 +95,11 @@ dotnet test Sistema.Producao.Testes/Sistema.Producao.Testes.csproj
 #### ⚙️ Postgres (pgAdmin)
 Conexão com o Banco de dados 
 - Com o Servidor do **Postgres** parado em Serviços, crie uma conexão Docker Postgres para 127.0.0.1 e informe o Usuário e Senha 
+
+- Caso precisar deletar a Database do Container 
+```bash 
+dotnet ef database drop --project InfraEstrutura.Producao.Server --startup-project InfraEstrutura.Producao.Server --force
+```
 
 ## 📁 Reporter
 #### 🔄 Executar a aplicação
@@ -177,6 +173,13 @@ Conexão com o Banco de dados
 - Recuperar as dependencias do projeto node_modules .
 ```bash
 npm install
+```
+
+#### ⚙️ Configuração - Certificados
+- Caso for necessário renovar o certificado SSL 
+```bash 
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
 ```
 
 Executar o Build do Projeto
