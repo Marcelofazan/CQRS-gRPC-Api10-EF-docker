@@ -185,6 +185,7 @@ dotnet dev-certs https --trust
 ```
 
 #### ⚙️ Configuração - RabbitMQ
+- Caso o RabbitMQ não estar atualizando 
 - Caso houver falhas na criação do Conteiner na porta do RabbitMQ execute no PowerShell executar . 
 ```bash 
 netstat -ano | findstr 5672
