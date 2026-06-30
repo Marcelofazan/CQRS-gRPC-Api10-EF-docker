@@ -2,12 +2,15 @@
 Exemplo de projeto com Arquitetura CQRS com comunicação gRPC e MediatR, mensageria RabbitMQ em C# ASP.NET Core 10 com banco de dados Postgres e MongoDB.
 
 #### 📋 O que você vai encontrar neste projeto
-| Tecnologia | Descrição |
-|-----------|-----------|
-| **CQRS** | Padrão arquitetural que separa as operações de escrita (comandos) das operações de leitura (consultas) |
-| **gRPC** | O gRPC é um framework para a comunicação de alta performance, utiliza o protocolo HTTP/2 na camada de rede e realiza a serialização de dados em Protocol Buffers. |
-| **Mediatr** | Desacoplar classes, permitindo que diferentes componentes de um sistema se comuniquem através de um ponto central (o mediador) |
-| **RabbitMQ** | Agente de mensagens (message broker) ele atua como um carteiro altamente inteligente e seguro  |
+| Tecnologia  | Papel Arquitetural | Descrição | 
+|-----------|-----------|-----------|
+| **gRPC** |Adaptador de Entrada / Contrato | Comunicação síncrona de alta performance para chamadas entre serviços externos e a sua API.|
+| **MediatR**| Orquestrador Interno | Biblioteca que implementa o padrão Mediator, roteando Queries (consultas) e Commands (comandos). | 
+| **CQRS**| Padrão de Projeto | Separação das operações: leituras usam a Query que busca no MongoDB (otimizado para leitura), e escritas usam o Command que persiste no Postgres. |
+| **RabbitMQ** | Adaptador de Saída | Message Broker para comunicação assíncrona (Event-Driven) entre microsserviços ou módulos independentes. | 
+| **Postgres (EF Core 10)** | Adaptador de Banco de Dados | Banco relacional ideal para manter a consistência e integridade das escritas do seu domínio. |
+| **MongoDB** | Adaptador de Leitura | Banco NoSQL altamente otimizado para armazenar as Views desnormalizadas e documentos rápidos para o lado de consulta do CQRS. |
+
 
 #### 💬 Requisitos do Projeto
 - Necessário **Docker** instalado.
