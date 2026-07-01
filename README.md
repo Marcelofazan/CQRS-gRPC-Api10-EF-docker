@@ -48,7 +48,7 @@ cd Sistema.Producao.API
 dotnet run --launch-profile https
 ```
 
-- Para fechar o Container após execução
+- Fechar Container
 ```bash 
 docker compose down              
 ```
